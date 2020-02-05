@@ -40,24 +40,35 @@ fn main() -> ! {
 
         // Set up the display
         let mut disp: TerminalMode<_> = SSD1306Builder::new().with_size(DisplaySize).connect_i2c(i2c).into();
-        // let mut disp: TerminalMode<_> = SSD1306Builder::new().connect_i2c(i2c).into();
-                
-        disp.init().unwrap();
         
-        disp.clear().unwrap();
-
+        disp.init().unwrap();
+            
+        disp.flush().unwrap();
+        
         for c in 97..123 {
-            disp.write_str(unsafe { core::str::from_utf8_unchecked(&[c]) }).unwrap();
+            disp.write_str(unsafe { core::str::from_utf8_unchecked(&[c]) }).unwrap(); 
         }
         
-
         
+    
+        loop {
+            
+            
+    
+            for c in 97..123 {
+                disp.write_str(unsafe { core::str::from_utf8_unchecked(&[c]) }).unwrap(); 
+            }
+        }
         
     });
+    
+}
 
+    loop {
+        continue;
     }
 
-    loop {}
+    
     
 }
 
